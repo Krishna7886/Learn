@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MY PERSONAL LEARNING UNIVERSITY — Learn From Zero. Build Real Skills. Become Job Ready.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Telugu:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="logo-icon">🎓</div>
+          <div class="brand-text">
+            <span class="brand-title">MY PERSONAL<br>LEARNING UNIVERSITY</span>
+            <span class="brand-tagline">Zero to Job-Ready</span>
+          </div>
+        </div>
+        <button class="icon-btn mobile-close" id="closeSidebarBtn" aria-label="Close Menu">✕</button>
+      </div>
+
+      <div class="sidebar-search">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="globalSearchInput" placeholder="Search 24 subjects, topics..." autocomplete="off" />
+        <div class="search-dropdown" id="searchDropdown"></div>
+      </div>
+
+      <nav class="sidebar-nav" id="sidebarNav">
+        <div class="nav-group-label">CORE LEARNING</div>
+        <button class="nav-item active" data-route="dashboard">
+          <span class="nav-icon">📊</span><span>Dashboard</span>
+        </button>
+        <button class="nav-item" data-route="roadmap">
+          <span class="nav-icon">🗺️</span><span>My Roadmap</span>
+        </button>
+        <button class="nav-item" data-route="subjects">
+          <span class="nav-icon">📚</span><span>All Subjects (24)</span>
+        </button>
+        <button class="nav-item" data-route="continue">
+          <span class="nav-icon">▶️</span><span>Continue Learning</span>
+        </button>
+        <button class="nav-item" data-route="ai-tutor">
+          <span class="nav-icon">🤖</span><span>AI Personal Tutor</span>
+        </button>
+
+        <div class="nav-group-label">PRACTICE & BUILD</div>
+        <button class="nav-item" data-route="quizzes">
+          <span class="nav-icon">📝</span><span>Practice & Quizzes</span>
+        </button>
+        <button class="nav-item" data-route="projects">
+          <span class="nav-icon">🛠️</span><span>Practical Projects</span>
+        </button>
+        <button class="nav-item" data-route="planner">
+          <span class="nav-icon">📅</span><span>Study Planner</span>
+        </button>
+
+        <div class="nav-group-label">GROWTH & CAREER</div>
+        <button class="nav-item" data-route="progress">
+          <span class="nav-icon">📈</span><span>My Progress</span>
+        </button>
+        <button class="nav-item" data-route="notes">
+          <span class="nav-icon">🗒️</span><span>Notes & Bookmarks</span>
+        </button>
+        <button class="nav-item" data-route="career">
+          <span class="nav-icon">💼</span><span>Career & Jobs</span>
+        </button>
+        <button class="nav-item" data-route="resources">
+          <span class="nav-icon">🔗</span><span>Free Resources</span>
+        </button>
+        <button class="nav-item" data-route="achievements">
+          <span class="nav-icon">🏆</span><span>Achievements</span>
+        </button>
+        <button class="nav-item" data-route="settings">
+          <span class="nav-icon">⚙️</span><span>Settings</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="xp-card">
+          <div class="xp-top">
+            <span class="level-badge" id="sidebarLevelBadge">Level 1 • Explorer</span>
+            <span class="xp-text" id="sidebarXpText">0 XP</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="sidebarXpBar" style="width: 15%"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper">
+      <!-- TOP BAR -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-btn mobile-menu-btn" id="openSidebarBtn" aria-label="Open Menu">☰</button>
+          <div class="breadcrumb" id="topBreadcrumb">Dashboard</div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="lang-toggle" title="Toggle English / Telugu Explanations">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="te">తెలుగు</button>
+          </div>
+
+          <div class="streak-pill" title="Daily Study Streak">
+            <span>🔥</span>
+            <span id="topStreakCount">1</span>d
+          </div>
+
+          <button class="icon-btn notification-btn" id="notifToggleBtn" title="Notifications">
+            🔔
+            <span class="notif-dot" id="notifBadge">3</span>
+          </button>
+
+          <button class="icon-btn theme-btn" id="themeToggleBtn" title="Toggle Dark/Light Mode">
+            🌙
+          </button>
+
+          <button class="btn btn-primary btn-sm" id="topResumeBtn">
+            ▶ Resume
+          </button>
+        </div>
+      </header>
+
+      <!-- NOTIFICATION DRAWER -->
+      <div class="notif-panel" id="notifPanel">
+        <div class="notif-header">
+          <h4>Notification Center</h4>
+          <button class="btn-link" id="markAllReadBtn">Mark all read</button>
+        </div>
+        <div class="notif-list" id="notifList"></div>
+      </div>
+
+      <!-- DYNAMIC VIEW CONTAINER -->
+      <main class="view-container" id="viewContainer"></main>
+    </div>
+  </div>
+
+  <!-- FLOATING ASK AI BUTTON & DRAWER -->
+  <button class="floating-ai-btn" id="floatingAiBtn" title="Ask AI Personal Tutor">
+    <span>🤖</span>
+    <span class="floating-ai-label">Ask AI Tutor</span>
+  </button>
+
+  <div class="ai-drawer" id="aiDrawer">
+    <div class="ai-drawer-header">
+      <div class="ai-title">
+        <span>🤖</span>
+        <div>
+          <h4>AI Personal Tutor</h4>
+          <small id="aiContextLabel">Context: General Syllabus</small>
+        </div>
+      </div>
+      <button class="icon-btn" id="closeAiDrawerBtn">✕</button>
+    </div>
+
+    <div class="ai-style-selector">
+      <button class="style-chip active" data-style="simple">Very Simple</button>
+      <button class="style-chip" data-style="detailed">Detailed</button>
+      <button class="style-chip" data-style="reallife">Real-Life Example</button>
+      <button class="style-chip" data-style="technical">Technical</button>
+      <button class="style-chip" data-style="interview">Interview Prep</button>
+    </div>
+
+    <div class="ai-chat-messages" id="aiChatMessages"></div>
+
+    <div class="ai-quick-prompts">
+      <button class="quick-prompt-btn" data-prompt="Explain this topic from zero like I am a complete beginner">Explain from zero</button>
+      <button class="quick-prompt-btn" data-prompt="Give me a real-life example and diagram">Real-life example</button>
+      <button class="quick-prompt-btn" data-prompt="Ask me a practice question with a hint">Practice question</button>
+    </div>
+
+    <form class="ai-input-form" id="aiInputForm">
+      <input type="text" id="aiUserInput" placeholder="Ask any doubt, paste code to debug, or request a quiz..." required />
+      <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+  </div>
+
+  <!-- MODAL OVERLAY (For Certificates, Diagrams, etc.) -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal-card" id="modalCard">
+      <div class="modal-header">
+        <h3 id="modalTitle">Modal Title</h3>
+        <button class="icon-btn" id="closeModalBtn">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- SCRIPTS -->
+  <script src="js/syllabus-data.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/diagrams.js"></script>
+  <script src="js/ai-tutor.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
